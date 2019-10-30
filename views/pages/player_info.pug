@@ -1,0 +1,51 @@
+//- player-info.pug
+include ../partials/header.pug
+include ../partials/menu.pug
+
+div.container
+  br
+  div.row
+    div.col-4
+      div.card
+        //- TODO: Modify the pug code below to conditionally set the image_src
+        - let image_src = '../../resources/img/helmet.jpg'
+
+        img.card-img-top#player_img(src= image_src, alt="Football Player")
+        div.card-body.mx-auto
+          form.form(action="/player_info/select_player", method="get")
+            select.custom-select(name="player_choice", onchange="this.form.submit()")
+              option(selected) Select Player
+              //option( value =1 , selected = value == 1) Cedric Vega
+              //option( value =2 , selected = value == 2) Myron Walter
+              //option( value =3 , selected = value == 3) Javier Washington
+              //option( value =4 , selected = value == 4) Wade Farmer
+              //option( value =5 , selected = value == 5) Doyle Buff
+              //option( value =6 , selected = value == 6) Melba Pope
+              //option( value =7 , selected = value == 7) Erick Graves
+              //option( value =8 , selected = value == 8) Charles Porter
+              //option( value =9 , selected = value == 9) Rafael Boreous
+              //option( value =10, selected = value == 10) Jared Castillo
+
+    div.col-8
+      div.table-responsive
+        table.table
+          tr
+            th Year
+            //td= result_2.year
+          tr
+            th Major
+            //td= result_2.major
+          tr
+            th Games Played
+            //td= result_3.count 
+          tr
+            td Passing Yards:
+            //td= result_2.passing_yards  / result_3.count 
+          tr
+            td Rushing Yards: 
+            //td= result_2.rushing_yards  / result_3.count
+          tr 
+            td Receiving Yards:
+            //td= result_2.receiving_yards  / result_3.count
+
+include ../partials/footer.pug
