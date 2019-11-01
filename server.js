@@ -72,8 +72,8 @@ app.get('/player_info', function(req, res) {
       my_title: "My Title Here",
       data: rows
     })
-    console.log("Why");
-    console.log(rows);
+    //console.log("Why");
+    //console.log(rows);
   })
   .catch(function (err) {
     // display error message in case an error
@@ -86,8 +86,9 @@ app.get('/player_info', function(req, res) {
 });
 
 app.get('/player_info/select_player', function(req, res) {
-  //var player_id = req.body.player_id; //think
-  var player_id = 1; // the above line should be the right answer beside hardcoding it 
+  console.log(req.query);
+  var player_id = req.query.player_choice; //think
+  //var player_id = 1; // the above line should be the right answer beside hardcoding it 
   //console.log("Whysfdsfsdfsdf");
   console.log(player_id);
   var query1 = 'select id, name from football_players;';
@@ -103,15 +104,19 @@ app.get('/player_info/select_player', function(req, res) {
       ]);
   })
   .then(data => {
-    console.log("why");
-    console.log(data[1][0]);
+    //console.log("why");
+    console.log(data[1][0].year);
     res.render('pages/player_info',{
         my_title: "Page Title Here",
-        result_1: data[0],
-        result_2: data[1][0],
-        result_3: data[2][0]
+        data: data[0],
+        year: data[1][0].year,
+        major: data[1][0].major,
+        count: data[2][0].count,
+        passing_yards: data[1][0].passing_yards,
+        rushing_yards: data[1][0].rushing_yards,
+        receiving_yards: data[1][0].receiving_yards
       })
-    console.log(data);
+    //console.log(data);
   })
   .catch(error => {
       // display error message in case an error
